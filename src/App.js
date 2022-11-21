@@ -1,20 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-import { useCallback, useState } from 'react';
-import axios from '../node_modules/axios/index';
-import NewsList from './components/NewsList';
-import Categories from './components/Categories';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import NewsPage from './pages/NewsPage';
 
-function App() {
-  const [category, setCategory] = useState('all');
-  const onSelect = useCallback((category) => setCategory(category), []);
-
+const App = () => {
   return (
-    <>
-      <Categories category={category} onSelect={onSelect} />
-      <NewsList category={category} />;
-    </>
+    <Routes>
+      <Route path="/" element={<NewsPage />} />
+      <Route path="/:category" element={<NewsPage />} />
+    </Routes>
   );
-}
+};
 
 export default App;
